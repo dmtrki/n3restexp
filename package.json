@@ -1,0 +1,44 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "nuxi dev",
+    "build": "nuxi build",
+    "start": "node .output/server/index.mjs",
+    "codegen": "graphql-codegen --config codegen.yml",
+    "gen": "graphql-codegen --config codegen.yml"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "2.3.0",
+    "@graphql-codegen/introspection": "2.1.0",
+    "@graphql-codegen/typescript": "2.4.1",
+    "@graphql-codegen/typescript-document-nodes": "2.2.1",
+    "@graphql-codegen/typescript-graphql-files-modules": "2.1.0",
+    "@graphql-codegen/typescript-operations": "2.2.1",
+    "@graphql-codegen/urql-introspection": "2.1.0",
+    "@nuxt3-graphql/codegen": "^0.2.1",
+    "@nuxt3-graphql/urql": "^0.2.1",
+    "@urql/exchange-graphcache": "^4.3.5",
+    "@urql/vue": "^0.6.0",
+    "graphql": "^16.0.1",
+    "graphql-tag": "^2.12.5",
+    "nuxt3": "^3.0.0-27307420.6a25d3e",
+    "vite-plugin-simple-gql": "^0.5.0",
+    "watson-scss": "^1.0.6"
+  },
+  "dependencies": {
+    "@graphql-codegen/typescript-urql-graphcache": "^2.2.2",
+    "@graphql-codegen/typescript-vue-urql": "^2.2.1",
+    "@vueuse/nuxt": "^7.0.0-alpha.3",
+    "less": "^4.1.2",
+    "nexus": "^1.1.0",
+    "sass": "^1.43.4",
+    "tslib": "^2.3.1",
+    "vant": "^3.3.3",
+    "vee-validate": "^4.5.6",
+    "vue-class-component": "^7.2.6",
+    "vue-horizontal": "^1.0.2",
+    "vue-lazy-hydration": "^2.0.0-beta.4",
+    "vue-ray": "^1.17.3",
+    "vue3-touch-events": "^4.1.0"
+  }
+}

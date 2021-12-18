@@ -1,0 +1,41 @@
+
+@mixin container {
+  width: 100%;
+  max-width: $container-width;
+  padding-left: $p-medium;
+  padding-right: $p-medium;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@mixin container-full {
+  width: 100%;
+  padding-left: $p-medium;
+  padding-right: $p-medium;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@mixin flex-centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-centered-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin block-large ($color: $bg-light) {
+  position: relative;
+  background-color: $color;
+  box-shadow: transparent($color, 34%) 0 vw(34px);
+  border-radius: 0px 0px $r-large $r-large;
+  width:100%;
+  @include padding-vw(108px, 21px, 55px, 21px);
+  @include up-vw(margin-top,-108px);
+}

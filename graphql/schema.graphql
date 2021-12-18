@@ -1,0 +1,502 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+}
+
+type Attribute {
+    attribute_group_id: Int
+    id: ID!
+    pivot: ProductAttribute
+    slug: String!
+    title: String!
+    uuid: UUID!
+    value: String
+    values: Mixed
+}
+
+type Country {
+    code: String
+    id: Int
+    manufacturers: [Manufacturer]!
+    order: Int
+    slug: String!
+    title: String!
+}
+
+type Manufacturer {
+    country: Country
+    country_code: String
+    description: String
+    details: JSON
+    id: Int!
+    "Relations"
+    logo: Media
+    products: [Product]!
+    products_count: Int
+    slug: String!
+    "Methods"
+    thumb: String
+    title: String!
+    uuid: UUID!
+}
+
+type Media {
+    createdAt: DateTime!
+    dimensions: Mixed
+    fileName: String!
+    id: Int!
+    name: String!
+    path: String!
+    properties: Mixed
+    type: String!
+    updatedAt: DateTime
+    url(conversion: String): String
+    uuid: String!
+}
+
+type Page {
+    extras: Mixed
+    id: ID!
+    slug: String!
+    title: String!
+}
+
+"Information about pagination using a Relay style cursor connection."
+type PageInfo {
+    "Number of nodes in the current page."
+    count: Int!
+    "Index of the current page."
+    currentPage: Int!
+    "The cursor to continue paginating forwards."
+    endCursor: String
+    "When paginating forwards, are there more items?"
+    hasNextPage: Boolean!
+    "When paginating backwards, are there more items?"
+    hasPreviousPage: Boolean!
+    "Index of the last available page."
+    lastPage: Int!
+    "The cursor to continue paginating backwards."
+    startCursor: String
+    "Total number of nodes in the paginated connection."
+    total: Int!
+}
+
+"Information about pagination using a fully featured paginator."
+type PaginatorInfo {
+    "Number of items in the current page."
+    count: Int!
+    "Index of the current page."
+    currentPage: Int!
+    "Index of the first item in the current page."
+    firstItem: Int
+    "Are there more pages after this one?"
+    hasMorePages: Boolean!
+    "Index of the last item in the current page."
+    lastItem: Int
+    "Index of the last available page."
+    lastPage: Int!
+    "Number of items per page."
+    perPage: Int!
+    "Number of total available items."
+    total: Int!
+}
+
+type Product {
+    attributes: [Attribute]
+    attributes_list: Mixed
+    category: ProductCategory!
+    category_id: Int
+    created_at: DateTime
+    description: String
+    description_cutted: String
+    details: Mixed
+    id: ID!
+    manufacturer: Manufacturer
+    manufacturer_id: Int
+    photos: [Media]
+    price: String
+    price_formatted: String
+    rating: String
+    slug: String!
+    status_code: ProductStatus
+    thumb: String
+    thumb_with_dimensions: Mixed
+    thumbnail: String
+    title: String!
+    updated_at: DateTime
+    uuid: UUID!
+    views: Int
+}
+
+type ProductAttribute {
+    value: String
+}
+
+type ProductCategory {
+    attributes: [Attribute]
+    children: [ProductCategory]
+    children_count: Int
+    details: [Mixed]
+    id: Int!
+    "Relations"
+    parent: ProductCategory
+    parent_id: Int
+    picture: Media
+    products_count: Int
+    slug: String!
+    "Methods"
+    thumb: String
+    title: String!
+    uuid: UUID!
+}
+
+"A paginated list of Product items."
+type ProductPaginator {
+    "A list of Product items."
+    data: [Product!]!
+    "Pagination information about the list of items."
+    paginatorInfo: PaginatorInfo!
+}
+
+"A paginated list of Product items."
+type ProductSimplePaginator {
+    "A list of Product items."
+    data: [Product!]!
+    "Pagination information about the list of items."
+    paginatorInfo: SimplePaginatorInfo!
+}
+
+type Query {
+    manufacturer(slug: String, uuid: UUID): Manufacturer
+    manufacturers(country_code: String, limit: Int, relatedCategory: String): [Manufacturer]!
+    manufacturersAbicaly: Mixed
+    manufacturersCount: Int!
+    manufacturersCountryly: Mixed
+    media: [Media!]!
+    page(slug: String): Page
+    pages: [Page!]!
+    product(uuid: UUID): Product!
+    productCategories(hasChildren: QueryProductCategoriesHasChildrenWhereHasConditions, hasParent: QueryProductCategoriesHasParentWhereHasConditions, hasProducts: QueryProductCategoriesHasProductsWhereHasConditions, parent_id: Int): [ProductCategory]!
+    productCategory(id: Int, slug: String, uuid: UUID): ProductCategory
+    products(
+        category_id: Int,
+        "Limits number of fetched items."
+        first: Int = 12,
+        hasManufacturer: QueryProductsHasManufacturerWhereHasConditions,
+        manufacturer_id: Int,
+        "The offset from which items are returned."
+        page: Int,
+        random: Boolean,
+        sorting: [QueryProductsSortingOrderByClause!],
+        uuids: [UUID]
+    ): ProductPaginator
+    productsAll(category_id: Int, limit: Int, manufacturer_id: Int, random: Boolean, sorting: [QueryProductsAllSortingOrderByClause!], uuids: [UUID]): [Product!]!
+    productsCount(category_id: Int, manufacturer_id: Int): Int!
+    productsLazy(
+        category_id: Int,
+        "Limits number of fetched items."
+        first: Int = 12,
+        manufacturer_id: Int,
+        "The offset from which items are returned."
+        page: Int,
+        random: Boolean,
+        sorting: [QueryProductsLazySortingOrderByClause!],
+        uuids: [UUID]
+    ): ProductSimplePaginator
+}
+
+"Information about pagination using a simple paginator."
+type SimplePaginatorInfo {
+    "Number of items in the current page."
+    count: Int!
+    "Index of the current page."
+    currentPage: Int!
+    "Index of the first item in the current page."
+    firstItem: Int
+    "Index of the last item in the current page."
+    lastItem: Int
+    "Number of items per page."
+    perPage: Int!
+}
+
+type User {
+    created_at: DateTime!
+    email: String!
+    id: ID!
+    name: String!
+    updated_at: DateTime!
+}
+
+enum ProductSortingColumn {
+    PRICE
+    VIEWS
+}
+
+enum ProductStatus {
+    ACTIVE
+    HIDDEN
+}
+
+"Allowed column names for the `hasChildren` argument on field `productCategories` on type `Query`."
+enum QueryProductCategoriesHasChildrenColumn {
+    PARENT_ID
+}
+
+"Allowed column names for the `hasParent` argument on field `productCategories` on type `Query`."
+enum QueryProductCategoriesHasParentColumn {
+    PARENT_ID
+}
+
+"Allowed column names for the `hasProducts` argument on field `productCategories` on type `Query`."
+enum QueryProductCategoriesHasProductsColumn {
+    CATEGORY_ID
+    MANUFACTURER_ID
+    STATUS_CODE
+}
+
+"Allowed column names for the `hasManufacturer` argument on field `products` on type `Query`."
+enum QueryProductsHasManufacturerColumn {
+    COUNTRY_CODE
+}
+
+"The available SQL operators that are used to filter query results."
+enum SQLOperator {
+    "Whether a value is within a range of values (`BETWEEN`)"
+    BETWEEN
+    "Equal operator (`=`)"
+    EQ
+    "Greater than operator (`>`)"
+    GT
+    "Greater than or equal operator (`>=`)"
+    GTE
+    "Whether a value is within a set of values (`IN`)"
+    IN
+    "Whether a value is not null (`IS NOT NULL`)"
+    IS_NOT_NULL
+    "Whether a value is null (`IS NULL`)"
+    IS_NULL
+    "Simple pattern matching (`LIKE`)"
+    LIKE
+    "Less than operator (`<`)"
+    LT
+    "Less than or equal operator (`<=`)"
+    LTE
+    "Not equal operator (`!=`)"
+    NEQ
+    "Whether a value is not within a range of values (`NOT BETWEEN`)"
+    NOT_BETWEEN
+    "Whether a value is not within a set of values (`NOT IN`)"
+    NOT_IN
+    "Negation of simple pattern matching (`NOT LIKE`)"
+    NOT_LIKE
+}
+
+"The available directions for ordering a list of records."
+enum SortOrder {
+    "Sort records in ascending order."
+    ASC
+    "Sort records in descending order."
+    DESC
+}
+
+"Specify if you want to include or exclude trashed results from a query."
+enum Trashed {
+    "Only return trashed results."
+    ONLY
+    "Return both trashed and non-trashed results."
+    WITH
+    "Only return non-trashed results."
+    WITHOUT
+}
+
+"Allows ordering a list of records."
+input OrderByClause {
+    "The column that is used for ordering."
+    column: String!
+    "The direction that is used for ordering."
+    order: SortOrder!
+}
+
+"Dynamic WHERE conditions for the `hasChildren` argument on the query `productCategories`."
+input QueryProductCategoriesHasChildrenWhereHasConditions {
+    "A set of conditions that requires all conditions to match."
+    AND: [QueryProductCategoriesHasChildrenWhereHasConditions!]
+    "Check whether a relation exists. Extra conditions or a minimum amount can be applied."
+    HAS: QueryProductCategoriesHasChildrenWhereHasConditionsRelation
+    "A set of conditions that requires at least one condition to match."
+    OR: [QueryProductCategoriesHasChildrenWhereHasConditions!]
+    "The column that is used for the condition."
+    column: QueryProductCategoriesHasChildrenColumn
+    "The operator that is used for the condition."
+    operator: SQLOperator = EQ
+    "The value that is used for the condition."
+    value: Mixed
+}
+
+"Dynamic HAS conditions for WHERE conditions for the `hasChildren` argument on the query `productCategories`."
+input QueryProductCategoriesHasChildrenWhereHasConditionsRelation {
+    "The amount to test."
+    amount: Int = 1
+    "Additional condition logic."
+    condition: QueryProductCategoriesHasChildrenWhereHasConditions
+    "The comparison operator to test against the amount."
+    operator: SQLOperator = GTE
+    "The relation that is checked."
+    relation: String!
+}
+
+"Dynamic WHERE conditions for the `hasParent` argument on the query `productCategories`."
+input QueryProductCategoriesHasParentWhereHasConditions {
+    "A set of conditions that requires all conditions to match."
+    AND: [QueryProductCategoriesHasParentWhereHasConditions!]
+    "Check whether a relation exists. Extra conditions or a minimum amount can be applied."
+    HAS: QueryProductCategoriesHasParentWhereHasConditionsRelation
+    "A set of conditions that requires at least one condition to match."
+    OR: [QueryProductCategoriesHasParentWhereHasConditions!]
+    "The column that is used for the condition."
+    column: QueryProductCategoriesHasParentColumn
+    "The operator that is used for the condition."
+    operator: SQLOperator = EQ
+    "The value that is used for the condition."
+    value: Mixed
+}
+
+"Dynamic HAS conditions for WHERE conditions for the `hasParent` argument on the query `productCategories`."
+input QueryProductCategoriesHasParentWhereHasConditionsRelation {
+    "The amount to test."
+    amount: Int = 1
+    "Additional condition logic."
+    condition: QueryProductCategoriesHasParentWhereHasConditions
+    "The comparison operator to test against the amount."
+    operator: SQLOperator = GTE
+    "The relation that is checked."
+    relation: String!
+}
+
+"Dynamic WHERE conditions for the `hasProducts` argument on the query `productCategories`."
+input QueryProductCategoriesHasProductsWhereHasConditions {
+    "A set of conditions that requires all conditions to match."
+    AND: [QueryProductCategoriesHasProductsWhereHasConditions!]
+    "Check whether a relation exists. Extra conditions or a minimum amount can be applied."
+    HAS: QueryProductCategoriesHasProductsWhereHasConditionsRelation
+    "A set of conditions that requires at least one condition to match."
+    OR: [QueryProductCategoriesHasProductsWhereHasConditions!]
+    "The column that is used for the condition."
+    column: QueryProductCategoriesHasProductsColumn
+    "The operator that is used for the condition."
+    operator: SQLOperator = EQ
+    "The value that is used for the condition."
+    value: Mixed
+}
+
+"Dynamic HAS conditions for WHERE conditions for the `hasProducts` argument on the query `productCategories`."
+input QueryProductCategoriesHasProductsWhereHasConditionsRelation {
+    "The amount to test."
+    amount: Int = 1
+    "Additional condition logic."
+    condition: QueryProductCategoriesHasProductsWhereHasConditions
+    "The comparison operator to test against the amount."
+    operator: SQLOperator = GTE
+    "The relation that is checked."
+    relation: String!
+}
+
+"Order by clause for the `sorting` argument on the query `productsAll`."
+input QueryProductsAllSortingOrderByClause {
+    "The column that is used for ordering."
+    column: ProductSortingColumn!
+    "The direction that is used for ordering."
+    order: SortOrder!
+}
+
+"Dynamic WHERE conditions for the `hasManufacturer` argument on the query `products`."
+input QueryProductsHasManufacturerWhereHasConditions {
+    "A set of conditions that requires all conditions to match."
+    AND: [QueryProductsHasManufacturerWhereHasConditions!]
+    "Check whether a relation exists. Extra conditions or a minimum amount can be applied."
+    HAS: QueryProductsHasManufacturerWhereHasConditionsRelation
+    "A set of conditions that requires at least one condition to match."
+    OR: [QueryProductsHasManufacturerWhereHasConditions!]
+    "The column that is used for the condition."
+    column: QueryProductsHasManufacturerColumn
+    "The operator that is used for the condition."
+    operator: SQLOperator = EQ
+    "The value that is used for the condition."
+    value: Mixed
+}
+
+"Dynamic HAS conditions for WHERE conditions for the `hasManufacturer` argument on the query `products`."
+input QueryProductsHasManufacturerWhereHasConditionsRelation {
+    "The amount to test."
+    amount: Int = 1
+    "Additional condition logic."
+    condition: QueryProductsHasManufacturerWhereHasConditions
+    "The comparison operator to test against the amount."
+    operator: SQLOperator = GTE
+    "The relation that is checked."
+    relation: String!
+}
+
+"Order by clause for the `sorting` argument on the query `productsLazy`."
+input QueryProductsLazySortingOrderByClause {
+    "The column that is used for ordering."
+    column: ProductSortingColumn!
+    "The direction that is used for ordering."
+    order: SortOrder!
+}
+
+"Order by clause for the `sorting` argument on the query `products`."
+input QueryProductsSortingOrderByClause {
+    "The column that is used for ordering."
+    column: ProductSortingColumn!
+    "The direction that is used for ordering."
+    order: SortOrder!
+}
+
+"Dynamic WHERE conditions for queries."
+input WhereConditions {
+    "A set of conditions that requires all conditions to match."
+    AND: [WhereConditions!]
+    "Check whether a relation exists. Extra conditions or a minimum amount can be applied."
+    HAS: WhereConditionsRelation
+    "A set of conditions that requires at least one condition to match."
+    OR: [WhereConditions!]
+    "The column that is used for the condition."
+    column: String
+    "The operator that is used for the condition."
+    operator: SQLOperator = EQ
+    "The value that is used for the condition."
+    value: Mixed
+}
+
+"Dynamic HAS conditions for WHERE condition queries."
+input WhereConditionsRelation {
+    "The amount to test."
+    amount: Int = 1
+    "Additional condition logic."
+    condition: WhereConditions
+    "The comparison operator to test against the amount."
+    operator: SQLOperator = GTE
+    "The relation that is checked."
+    relation: String!
+}
+
+
+"""
+Loose type that allows any value. Be careful when passing in large `Int` or `Float` literals,
+as they may not be parsed correctly on the server side. Use `String` literals if you are
+dealing with really large numbers to be on the safe side.
+"""
+scalar Mixed
+
+"A datetime string with format `Y-m-d H:i:s`, e.g. `2018-05-23 13:43:32`."
+scalar DateTime
+
+scalar UUID
+
+"Arbitrary data encoded in JavaScript Object Notation. See https://www.json.org/."
+scalar JSON
+
+"A date string with format `Y-m-d`, e.g. `2011-05-23`."
+scalar Date

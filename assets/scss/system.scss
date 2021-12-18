@@ -1,0 +1,17 @@
+@import "node_modules/watson-scss/src/watson";
+
+@import './system/vars/base',
+        './system/vars/colors',
+        './system/vars/sizes',
+
+        './system/functions',
+        './system/keyframes',
+
+        './system/mixins/animation',
+        './system/mixins/card',
+        './system/mixins/decoration',
+        './system/mixins/grid',
+        './system/mixins/sizing',
+        './system/mixins/typography',
+        './system/mixins/form',
+        './system/mixins/fallback';

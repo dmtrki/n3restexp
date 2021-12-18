@@ -1,0 +1,83 @@
+@mixin inputBase {
+  @include vmin(padding-top, 8px);
+  @include vmin(padding-bottom, 5px);
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin inputWrap {
+  width: 100%;
+}
+
+@mixin input($state: default) {
+  @if $state == default {
+    @include mfs(13px);
+    @include padding-vmin(21px, 13px, 10px, 21px);
+    @include vmin(max-width, 377px);
+    border-radius: 8px;
+    width: 100%;
+    border: 1px solid transparent;
+    box-shadow: inset 0.2rem 0.2rem 0.5rem #6fa1ff2e, inset -0.2rem -0.2rem 0.5rem #ffffff94;
+    background: none;
+    transition: all .21s;
+
+    &:focus {
+      outline: none;
+      box-shadow: 0.3rem 0.3rem 0.6rem #6fa1ff2e, -0.2rem -0.2rem 0.5rem #ffffff94;
+
+      & + label {
+        @include labelFloating;
+      }
+    }
+
+    @include when(changed) {
+      & + label {
+        @include labelFloating;
+      }
+
+      &.is-valid {
+        box-shadow: inset 0.2rem 0.2rem 0.5rem #41e2ad2e, inset -0.2rem -0.2rem 0.5rem #e5fff994;
+      }
+
+      &.is-invalid {
+        transition-delay: 1s;
+        box-shadow: inset 0.2rem 0.2rem 0.5rem #e314142e, inset -0.2rem -0.2rem 0.5rem #ffc2c294;
+
+        & + label {
+          color: $error;
+          animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+          backface-visibility: hidden;
+          perspective: 300px;
+        }
+      }
+    }
+
+    @include when(success) {
+      border: 1px solid $success;
+    }
+  }
+}
+
+@mixin labelFloating {
+  position: absolute;
+  top: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  @include mfs(10px);
+  opacity: .54;
+  transition: all .13s ease-in;
+}
+
+@mixin label($state: default) {
+  @include vmin(left, 21px);
+  @include mfs(13px);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: bold;
+  white-space: nowrap;
+  color: $info;
+  transition: all .21s ease-out;
+}

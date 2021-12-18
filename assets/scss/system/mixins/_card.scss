@@ -1,0 +1,92 @@
+@mixin thumb-bg {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@mixin make-card($level: 1, $radius: 1, $style: "neu") {
+  width: auto;
+  max-width: 100%;
+  $value: golden($card-base, $level);
+  text-decoration: none;
+  @include padding-vw($value);
+  border-radius: $value;
+  transition: 0.13s * $level cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@mixin define-glass($type: "medium") {
+  @if $type == "medium" {
+    background: rgba( 255, 255, 255, 0.55 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.34 );
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur( 8px );
+  }
+}
+
+@mixin  define-neu($type: "medium") {
+  box-shadow: 
+      inset 0 0 15px rgba(55, 84, 170,0),
+      inset 0 0 20px rgba(255, 255, 255,0),
+      7px 7px 15px rgba(55, 84, 170,.15),
+      -7px -7px 20px rgba(255, 255, 255,1),
+      inset 0px 0px 4px rgba(255, 255, 255,.2);
+  
+    &:hover {
+      box-shadow: 
+        inset 7px 7px 15px rgba(55, 84, 170,.15),
+        inset -7px -7px 20px rgba(255, 255, 255,1),
+        0px 0px 4px rgba(255, 255, 255,.2);
+    }
+    transition: box-shadow 399ms ease-in-out;
+}
+
+@mixin make-glass-card {
+  background: rgba( 255, 255, 255, 0.55 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 8.0px );
+  -webkit-backdrop-filter: blur(8.0px);
+}
+
+@mixin neu($color,$direction: topleft,$inset: false,$distance: 2px ) {
+  $v: $distance;
+	$topX: ($v*2*-1);
+	$topY: ($v*2*-1);
+		
+	@if $direction == 'topcenter' {
+		$topX: 0px;
+		$topY: ($v*2*-1);
+	}
+	@if $direction == 'topright' {
+		$topX: ($v*2);
+		$topY: ($v*2*-1);
+	}
+		
+	$out: $topX $topY ($v*3) rgba(#fff,.7),
+		  $topX*-1 $topY*-1 ($v*3) darken($color,12),
+		  inset $topX $topY ($v*6) rgba(#fff,.1),
+		  inset $topX*-1 $topY*-1 ($v*6) darken($color,0);
+
+	$in: $topX $topY ($v*5) rgba(#fff,.2),
+		 $topX*-1 $topY*-1 ($v*3) darken($color,0),
+		 inset $topX $topY ($v*6) rgba(#fff,.6),
+	     inset $topX*0.5 $topY*0.5 ($v) rgba(#fff,.2),
+		 inset $topX*-1 $topY*-1 ($v*3) darken($color,10);
+		
+	@if $inset {
+		box-shadow: $in;
+	}
+	@else {
+		box-shadow: $out;
+	}
+
+}
+@mixin neufuck($background: #fefefe, $blur: 3, $elevation: 3) {
+  $highlight: lighten($background, 5%);
+  $lowlight: darken($background, 5%);
+  $shadowhigh: lighten($background, 13%);
+  $shadowlow: darken($background, 13%);
+
+  $base: 3px;
+  background: linear-gradient(145deg, $highlight, $lowlight);
+  box-shadow: golden($base,$elevation) golden($base,$elevation) golden($base,$blur) $shadowlow, -(golden($base,$elevation)) -(golden($base,$elevation)) golden($base,$blur) $shadowhigh;
+}

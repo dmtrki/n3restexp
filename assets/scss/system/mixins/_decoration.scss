@@ -1,0 +1,42 @@
+@mixin blur-bg {
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+@mixin overlay {
+  background: linear-gradient(168.09deg, #5A35C2 2.27%, #48B69B 98.88%);
+  opacity: .55;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+
+
+@mixin border-gradient($dir, $from, $to, $width) {
+  border-left: $width solid $from;
+  border-right: $width solid $to;
+  background-image:
+    // Needed for both the top and bottom borders
+    -webkit-linear-gradient($dir, $from, $to),
+    -webkit-linear-gradient($dir, $from, $to);
+  background-size: 100% $width;
+  background-position: 0 100%, 0 0;
+  background-repeat: no-repeat;
+  background-clip: border-box;
+}
+
+@mixin border-image($from, $to, $width) {
+  border: $width solid transparent;
+  border-image: linear-gradient(left, $from, $to);
+  border-image-slice: 1;
+  border-image-width: $width;
+}
+
+@mixin font-gradient($from, $to, $dir) {
+  background: linear-gradient($dir, $from, $to);
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}

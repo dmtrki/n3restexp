@@ -1,0 +1,42 @@
+@use "sass:math";
+
+@function golden($value, $steps:1, $down: false) {
+  $result: 0;
+  @if $down == true {
+    $phi: 0.618;
+  } @else {
+    $phi: 1.618;
+  }
+  @while $steps > 0 {
+    $result: $value * $phi + $result;
+    $steps: $steps - 1;
+  }
+  @return $result;
+}
+
+// вычисления размеров
+@function rem($size) {
+  @return math.div($size, 16px) * 1rem;
+}
+
+@function vmax($px) {
+  @if type-of($px) == 'number' and index('px', unit($px)) != null {
+    @return math.div($px * 100vmax, $base-vmax);
+  } @else {
+    @return $px;
+  }
+}
+@function vmin($px) {
+  @if type-of($px) == 'number' and index('px', unit($px)) != null {
+    @return math.div($px * 100vmin, $base-vmin);
+  } @else {
+    @return $px;
+  }
+}
+@function vw($px-vw) {
+  @if type-of($px-vw) == 'number' and index('px', unit($px-vw)) != null {
+    @return math.div($px-vw * 100vw, $base-vw);
+  } @else {
+    @return auto;
+  }
+}

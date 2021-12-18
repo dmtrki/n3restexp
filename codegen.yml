@@ -1,0 +1,19 @@
+overwrite: true
+schema: './graphql/schema.graphql'
+documents: './graphql/**/*.graphql'
+generates:
+  ./graphql/generated.ts:
+    plugins:
+      - typescript
+      - urql-introspection
+      - typescript-urql-graphcache
+  ./graphql/graphql.schema.json:
+    plugins:
+      - introspection
+  ./graphql/operations.ts:
+    config:
+      documentMode: documentNode
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-vue-urql

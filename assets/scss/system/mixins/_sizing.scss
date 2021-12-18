@@ -1,0 +1,127 @@
+@use "sass:math";
+
+@mixin fluid($property, $value, $fallback: false) {
+  @if ($fallback != false) {
+    #{$property}: $fallback;
+  }
+  @media screen and (min-width: $breakpoint-to-fluid) {
+    #{$property}: vw($value);
+  }
+  @media screen and (max-width: $breakpoint-to-fluid - 1) {
+    #{$property}: vmin($value);
+  }
+}
+
+@mixin vw($property, $value, $fallback: false) {
+  @if ($fallback != false) {
+    #{$property}: $fallback;
+  }
+  #{$property}: vw($value);
+}
+@mixin vmin($property, $value, $fallback: false) {
+  @if ($fallback != false) {
+    #{$property}: $fallback;
+  }
+  #{$property}: vmin($value);
+}
+
+@mixin mfs($size) {
+  font-size: $size;
+  $size: rem($size);
+  font-size: calc(#{$size} + 0.25vmax);
+}
+
+@mixin ff($size) {
+  font-size: $size;
+  line-height: $size * $line-height-base;
+  $size: rem($size);
+  $line-height: $size * $line-height-base;
+  font-size: calc(#{$size} + 0.25vmax);
+  line-height: calc(#{$line-height} + 0.25vmax);
+
+  @media screen and (min-width: $breakpoint-to-fluid) {
+    font-size: vw($size);
+    line-height: vw($line-height);
+  }
+}
+
+@mixin font-vmin($size) {
+  font-size: $size;
+  line-height: $size * $line-height-base;
+  font-size: vmin($size);
+  line-height: vmin($size * $line-height-base);
+}
+
+@mixin padding-vmin($top, $right:false, $bottom:false, $left:false) {
+  @if $right == false {
+    @include vmin(padding, $top);
+  } @else if $bottom == false {
+    @include vmin(padding-top, $top);
+    @include vmin(padding-bottom, $top);
+    @include vmin(padding-left, $right);
+    @include vmin(padding-right, $right);
+  } @else {
+    @include vmin(padding-top, $top);
+    @include vmin(padding-bottom, $bottom);
+    @include vmin(padding-left, $left);
+    @include vmin(padding-right, $right);
+  }
+}
+
+@mixin margin-vmin($top, $right:false, $bottom:false, $left:false) {
+  @if $right == false {
+    @include vmin(margin, $top);
+  }  @else if $bottom == false {
+    @include vmin(margin-top, $top);
+    @include vmin(margin-bottom, $top);
+    @include vmin(margin-left, $right);
+    @include vmin(margin-right, $right);
+  } @else {
+    @include vmin(margin-top, $top);
+    @include vmin(margin-bottom, $bottom);
+    @include vmin(margin-left, $left);
+    @include vmin(margin-right, $right);
+  }
+}
+
+@mixin font-vw($value) {
+  $line-height: $value * $line-height-base;
+  font-size: $value;
+  line-height: $line-height;
+  @media screen and (min-width: $breakpoint-to-fluid) {
+    font-size: vw($value);
+    line-height: vw($line-height);
+  }
+}
+
+@mixin padding-vw($top, $right:false, $bottom:false, $left:false) {
+  @if $right == false {
+    @include up-vw(padding, $top);
+  } @else if $bottom == false {
+    @include up-vw(padding-top, $top);
+    @include up-vw(padding-bottom, $top);
+    @include up-vw(padding-left, $right);
+    @include up-vw(padding-right, $right);
+  } @else {
+    @include up-vw(padding-top, $top);
+    @include up-vw(padding-bottom, $bottom);
+    @include up-vw(padding-left, $left);
+    @include up-vw(padding-right, $right);
+  }
+}
+
+@mixin margin-vw($top, $right:false, $bottom:false, $left:false) {
+  @if $right == false {
+    @include up-vw(margin, $top);
+  }  @else if $bottom == false {
+    @include up-vw(margin-top, $top);
+    @include up-vw(margin-bottom, $top);
+    @include up-vw(margin-left, $right);
+    @include up-vw(margin-right, $right);
+  } @else {
+    @include up-vw(margin-top, $top);
+    @include up-vw(margin-bottom, $bottom);
+    @include up-vw(margin-left, $left);
+    @include up-vw(margin-right, $right);
+  }
+}

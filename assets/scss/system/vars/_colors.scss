@@ -1,0 +1,50 @@
+$main: #333;
+$light: #ffffff;
+$primary: #0F4C81;
+$secondary: #187E7E;
+$accent: #3A057E;
+$accent-2: #FF7C32;
+$link: #246DAD;
+$info: #555555;
+$disabled: #a0a0a0;
+
+// states
+$success: #19966c;
+$error: #ff3232;
+
+
+$bg-light: #FCFCFC;
+$bg-light-g: linear-gradient(135deg, #FFFFFF 0%, #E6E6E6 100%);
+$bg-lighter: #FEFEFE;
+$bg-light-accent: #F0F3FF;
+$bg-light-accent-g: linear-gradient(128.75deg, #EDFCFF -6.91%, #DACDFF 101.68%);
+$bg-dark:#0F4C81;
+$bg-dark-second-g: linear-gradient(104.34deg, #0F4C81 -3.95%, #0B9B9B 101.28%);
+$bg-dark-accent-g: linear-gradient(167.55deg, #446DFF 8.9%, #A848FD 96.41%);
+
+$bg-1: linear-gradient(168.68deg, #068CA9 -3.57%, #441A87 83.6%);
+$bg-2: linear-gradient(139.46deg, #0F4C81 23.05%, #0CB8AE 85.99%);
+$bg-3: linear-gradient(264.23deg, #FF8744 -1.51%, #4F038A 80.62%);
+
+
+/* accent shadow
+box-shadow: 3px 3px 8px 0px #DD6E528C;
+box-shadow: -3px -3px 8px 0px #51048A8C;
+*/
+
+/* button to cart
+background: linear-gradient(135deg, #FFFFFF 0%, #E6E6E6 100%);
+border: 1px solid #F3F3F3;
+box-shadow: 13px 13px 33px 0px #A0A0A0E5;
+
+box-shadow: -13px -13px 26px 0px #FFFFFFE5;
+
+box-shadow: 13px -13px 26px 0px #A0A0A033;
+
+box-shadow: -13px 13px 26px 0px #A0A0A033;
+
+box-shadow: -1px -1px 2px 0px #A0A0A080 inset;
+
+box-shadow: 1px 1px 2px 0px #FFFFFF4D inset;
+
+*/

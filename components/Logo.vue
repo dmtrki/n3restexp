@@ -1,0 +1,116 @@
+<template>
+  <a class="logo" href="/">
+    <svg viewBox="0 0 58 89" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 0.500028 3.18351e-05 1 9.63428 66.7522)" fill="#6E6E6E"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 -0.500028 -3.18351e-05 1 0.000488281 72.3147)" fill="#5A5A5A"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.866041 0.499972 -0.866041 0.499972 9.63428 77.8762)" fill="#AAAAAA"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 0.500028 3.18351e-05 1 0.000244141 72.3134)" fill="#2E1B9C"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 -0.500028 -3.18351e-05 1 9.63428 77.8759)" fill="#3D24D5"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.866041 -0.499972 0.866041 0.499972 0.000244141 72.3145)" fill="#828282"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 0.500028 3.18351e-05 1 9.63428 55.6267)" fill="#6E6E6E"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 -0.500028 -3.18351e-05 1 0.000488281 61.1892)" fill="#5A5A5A"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.866041 0.499972 -0.866041 0.499972 9.63428 66.7507)" fill="#AAAAAA"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 0.500028 3.18351e-05 1 0.000244141 61.1876)" fill="#252299"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 -0.500028 -3.18351e-05 1 9.63428 66.7504)" fill="#312EBD"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.866041 -0.499972 0.866041 0.499972 0.000244141 61.189)" fill="#828282"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 0.500028 3.18351e-05 1 9.63428 44.5013)" fill="#6E6E6E"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 -0.500028 -3.18351e-05 1 0.000488281 50.0638)" fill="#5A5A5A"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.866041 0.499972 -0.866041 0.499972 9.63428 55.6254)" fill="#AAAAAA"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 0.500028 3.18351e-05 1 0.000244141 50.0625)" fill="#322098"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 -0.500028 -3.18351e-05 1 9.63428 55.625)" fill="#3A21C6"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.866041 -0.499972 0.866041 0.499972 0.000244141 50.0636)" fill="#828282"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 0.500028 3.18351e-05 1 9.63428 33.3761)" fill="#6E6E6E"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 -0.500028 -3.18351e-05 1 0.000488281 38.9386)" fill="#5A5A5A"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.866041 0.499972 -0.866041 0.499972 9.63428 44.5001)" fill="#AAAAAA"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 0.500028 3.18351e-05 1 0.000244141 38.937)" fill="#431E95"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 -0.500028 -3.18351e-05 1 9.63428 44.4998)" fill="#5425BB"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.866041 -0.499972 0.866041 0.499972 0.000244141 38.9384)" fill="#828282"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 0.500028 3.18351e-05 1 9.63428 22.2507)" fill="#6E6E6E"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 -0.500028 -3.18351e-05 1 0.000488281 27.8132)" fill="#5A5A5A"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.866041 0.499972 -0.866041 0.499972 9.63428 33.3748)" fill="#AAAAAA"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 0.500028 3.18351e-05 1 0.000244141 27.8119)" fill="#4E1C94"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 -0.500028 -3.18351e-05 1 9.63428 33.3744)" fill="#6526BD"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.866041 -0.499972 0.866041 0.499972 0.000244141 27.813)" fill="#828282"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 0.500028 3.18351e-05 1 9.63428 11.1256)" fill="#6E6E6E"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 -0.500028 -3.18351e-05 1 0.000488281 16.6881)" fill="#5A5A5A"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.866041 0.499972 -0.866041 0.499972 9.63428 22.2496)" fill="#AAAAAA"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 0.500028 3.18351e-05 1 0.000244141 16.6864)" fill="#561A93"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 -0.500028 -3.18351e-05 1 9.63428 22.2489)" fill="#7025BB"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.866041 -0.499972 0.866041 0.499972 0.000244141 16.6874)" fill="#66208D"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 0.500028 3.18351e-05 1 19.2764 5.56299)" fill="#6E6E6E"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 -0.500028 -3.18351e-05 1 9.64258 11.1255)" fill="#5A5A5A"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.866041 0.499972 -0.866041 0.499972 19.2764 16.687)" fill="#AAAAAA"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 0.500028 3.18351e-05 1 9.64233 11.1239)" fill="#80347E"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 -0.500028 -3.18351e-05 1 19.2764 16.6864)" fill="#983F96"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.866041 -0.499972 0.866041 0.499972 9.64233 11.1252)" fill="#9D4A6D"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 0.500028 3.18351e-05 1 28.9182 0.00012207)" fill="#6E6E6E"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 -0.500028 -3.18351e-05 1 19.2844 5.56262)" fill="#5A5A5A"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.866041 0.499972 -0.866041 0.499972 28.9182 11.1241)" fill="#AAAAAA"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 0.500028 3.18351e-05 1 19.2842 5.56128)" fill="#A75267"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 -0.500028 -3.18351e-05 1 28.9182 11.1238)" fill="#969696"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.866041 -0.499972 0.866041 0.499972 19.2842 5.56189)" fill="#FF8325"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 0.500028 3.18351e-05 1 38.5603 5.56299)" fill="#6E6E6E"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 -0.500028 -3.18351e-05 1 28.9265 11.1255)" fill="#5A5A5A"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.866041 0.499972 -0.866041 0.499972 38.5603 16.687)" fill="#AAAAAA"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 0.500028 3.18351e-05 1 28.9263 11.1239)" fill="#BA5853"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 -0.500028 -3.18351e-05 1 38.5603 16.6864)" fill="#722C81"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.866041 -0.499972 0.866041 0.499972 28.9263 11.1252)" fill="#974369"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 0.500028 3.18351e-05 1 28.9182 33.3761)" fill="#6E6E6E"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 -0.500028 -3.18351e-05 1 19.2844 38.9386)" fill="#5A5A5A"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.866041 0.499972 -0.866041 0.499972 28.9182 44.5001)" fill="#AAAAAA"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 0.500028 3.18351e-05 1 19.2842 38.937)" fill="#0E2C78"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 -0.500028 -3.18351e-05 1 28.9182 44.4998)" fill="#1A46BA"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.866041 -0.499972 0.866041 0.499972 19.2842 38.9384)" fill="#2464A4"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 0.500028 3.18351e-05 1 38.5603 50.0645)" fill="#6E6E6E"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 -0.500028 -3.18351e-05 1 28.9265 55.627)" fill="#5A5A5A"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.866041 0.499972 -0.866041 0.499972 38.5603 61.1885)" fill="#AAAAAA"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 0.500028 3.18351e-05 1 28.9258 55.6252)" fill="#0F8DA9"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 -0.500028 -3.18351e-05 1 38.5603 61.1877)" fill="#23B5D6"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.866041 -0.499972 0.866041 0.499972 28.9258 55.6262)" fill="#2681AA"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 0.500028 3.18351e-05 1 48.2021 22.2507)" fill="#6E6E6E"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 -0.500028 -3.18351e-05 1 38.5681 27.8132)" fill="#5A5A5A"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.866041 0.499972 -0.866041 0.499972 48.2021 33.3746)" fill="#AAAAAA"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 0.500028 3.18351e-05 1 38.5679 27.8119)" fill="#2D3C9C"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 -0.500028 -3.18351e-05 1 48.2021 33.3744)" fill="#234F9E"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.866041 -0.499972 0.866041 0.499972 38.5679 27.8129)" fill="#433896"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 0.500028 3.18351e-05 1 48.2021 66.7522)" fill="#6E6E6E"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 -0.500028 -3.18351e-05 1 38.5681 72.3147)" fill="#5A5A5A"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.866041 0.499972 -0.866041 0.499972 48.2021 77.8762)" fill="#AAAAAA"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 0.500028 3.18351e-05 1 38.5679 72.3134)" fill="#1149B4"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.86601 -0.500028 -3.18351e-05 1 48.2021 77.8759)" fill="#39CBCB"/>
+      <rect width="11.1245" height="11.1245" transform="matrix(0.866041 -0.499972 0.866041 0.499972 38.5679 72.3143)" fill="#2BA0B0"/>
+    </svg>
+  </a>
+</template>
+
+<script>
+export default {
+  props: {
+    theme: {
+      type: String,
+      default: 'default'
+    }
+  },
+  data() {
+    return {
+
+    }
+  },
+  computed: {
+
+  },
+  methods: {
+
+  },
+}
+</script>
+
+<style lang="scss">
+.logo {
+  @include vmin(width, 44px);
+  // @include vmin(height, 66px);
+  min-height: 34px;
+  height: 100%;
+  text-decoration: none;
+}
+</style>

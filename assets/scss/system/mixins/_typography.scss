@@ -1,0 +1,13 @@
+@mixin title {
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+@mixin titled {
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+@mixin font-button($sized: 'medium') {
+  
+}

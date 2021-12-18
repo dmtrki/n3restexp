@@ -1,0 +1,33 @@
+$container-width: 98vw;
+$paddings: 21px;
+
+$r-large: 55px;
+$r-inter: 34px;
+$r-middle: 21px;
+$r-small: 13px;
+
+$p-large: 34px;
+$p-medium: 21px;
+$p-small: 13px;
+
+$margin-xsmall: 5px;
+$margin-small: 13px;
+$margin-medium: 21px;
+$margin-large: 34px;
+$margin-xlarge: 55px;
+
+$sizes: (
+  "1": 3px,
+  "2": 5px,
+  "3": 8px,
+  "4": 13px,
+  "5": 21px,
+  "6": 34px,
+  "7": 55px,
+  "8": 89px,
+  "9": 144px,
+);
+
+@function size($level) {
+  @return map-get($sizes, $level);
+}

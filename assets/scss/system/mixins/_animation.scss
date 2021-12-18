@@ -1,0 +1,52 @@
+
+
+
+@mixin animate ($type: 'fadeIn', $duration: .3s, $delay: '') {
+  animation-duration: .55s;
+  animation-duration: var(--animate-duration);
+  animation-fill-mode: both;
+  animation-name: $type;
+  animation-duration: $duration;
+  @if $delay != '' {
+    animation-delay: $delay;
+  }
+}
+
+@mixin v-transition($type: 'fade', $speed: 'fast') {
+  $speeds: (
+    'lighting': 0.21s,
+    'fast': 0.34s,
+    'slow': 0.55s
+  );
+  @if $type == 'fade' {
+    .fade-enter-active{
+        transition: opacity map-get($speeds, $speed);
+    }
+    .fade-leave-active {
+        opacity: 0;
+    }
+    .fade-enter, .fade-leave-to {
+        opacity: 0;
+    }
+
+  }
+}
+
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}

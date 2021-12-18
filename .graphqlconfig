@@ -1,0 +1,15 @@
+{
+  "name": "Restoreca Schema",
+  "schemaPath": "graphql/schema.graphql",
+  "extensions": {
+    "endpoints": {
+      "restoreca test api": {
+        "url": "https://restoreca.api/graphql",
+        "headers": {
+          "user-agent": "JS GraphQL"
+        },
+        "introspect": true
+      }
+    }
+  }
+}
