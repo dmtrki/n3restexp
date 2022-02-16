@@ -1,13 +1,59 @@
+<script setup>
+import useTheming from '~/composables/components/useTheming'
+
+const props = defineProps({
+  title: {
+    type: String,
+    default: ''
+  },
+  tail: {
+    type: Boolean,
+    default: false
+  },
+  accent: {
+    type: Boolean,
+    default: false
+  },
+  relative: {
+    type: Boolean,
+    default: false
+  }
+})
+
+const {classRoot} =  useTheming('ActionSheet')
+
+const classes = computed(() => {
+  if (this.tail) classList.push(r + '--taily')
+  if (this.accent) classList.push(r + '--accent')
+  if (this.relative) classList.push(r + '--relative')
+
+  if (this.isOpen) classList.push('is-open')
+
+  return classList.join(' ')
+})
+
+const isOpen = ref(false)
+
+const open = () => isOpen.value = true
+const close = () => isOpen.value = false
+</script>
+
+<script>
+export default {
+  name: 'MmmActionSheet'
+}
+</script>
+
 <template>
   <ClientOnly>
     <div
         v-touch:tap="open"
         v-touch:swipe.top="open"
         v-touch:swipe.bottom="close"
-        :class="classList"
+        :class="classes"
     >
-      <div v-if="title" :class="classRoot + '__title'">
-        {{ title }}
+      <div v-if="props.title" :class="classRoot + '__title'">
+        {{ props.title }}
       </div>
 
       <div :class="classRoot + '__content'">
@@ -16,59 +62,6 @@
     </div>
   </ClientOnly>
 </template>
-<script>
-export default {
-  props: {
-    title: {
-      type: String,
-      default: ''
-    },
-    tail: {
-      type: Boolean,
-      default: false
-    },
-    accent: {
-      type: Boolean,
-      default: false
-    },
-    relative: {
-      type: Boolean,
-      default: false
-    },
-  },
-  data() {
-    return {
-      classRoot: 'mmmActionSheet',
-      isOpen: false,
-    }
-  },
-  computed: {
-    classList() {
-      const r = this.classRoot
-      let classList = [r]
-
-      if (this.tail) classList.push(r + '--taily')
-      if (this.accent) classList.push(r + '--accent')
-      if (this.relative) classList.push(r + '--relative')
-
-      if (this.isOpen) classList.push('is-open')
-
-      return classList.join(' ')
-    }
-  },
-  methods: {
-    open() {
-      this.isOpen = true
-    },
-    close() {
-      this.isOpen = false
-    },
-    onSwipe(direction, el) {
-
-    }
-  }
-}
-</script>
 
 <style lang="scss">
   @include block(mmmActionSheet) {

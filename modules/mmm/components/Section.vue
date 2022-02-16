@@ -1,56 +1,53 @@
+<script setup>
+import {_ps, _pbf, _pbt} from '~/helpers/componentsHelper'
+import {useTheming} from '~/composables/components/useTheming'
+
+const props = defineProps({
+  offsetT: _ps,
+  firstSection: _pbf,
+  fullWidth: _pbf,
+  flex: _pbf,
+  transparent: _pbf,
+  accent: _pbf,
+  light: _pbt,
+})
+
+const {classRoot} = useTheming('Section')
+
+const classes = computed(() => {
+      const t = classRoot
+      let classList = [t]
+
+      if (props.fullWidth) classList.push(t + '--fullWidth')
+      if (props.flex) classList.push(t + '--flex')
+      if (props.transparent) classList.push(t + '--transparent')
+
+      if (props.offsetT) classList.push(t + '--offsetT_' + props.offsetT)
+
+      if (props.accent) {
+        const _ = props.light ? '--accent_light' : '--accent'
+        classList.push(t + _)
+      }
+
+      if (props.firstSection) classList.push(t + '--first')
+
+      return classList.join(' ')
+    })
+</script>
+
+<script>
+export default {
+  name: 'MmmSection'
+}
+</script>
+
 <template>
-  <section :class="classList">
+  <section :class="classes">
     <div class="mmmSection__box">
       <slot />
     </div>
   </section>
 </template>
-
-<script>
-const _bdf = {type: Boolean, default: false}
-const _bdt = {type: Boolean, default: true}
-
-export default {
-  props: {
-    offsetT: {
-      type: String,
-      default: ''
-    },
-    firstSection: _bdf,
-    fullWidth: _bdf,
-    flex: _bdf,
-    transparent: _bdf,
-    accent: _bdf,
-    light: _bdt,
-  },
-  data() {
-    return {
-      classBase: 'mmmSection'
-    }
-  },
-  computed: {
-    classList(){
-      const t = this.classBase
-      let classList = [t]
-
-      if (this.fullWidth) classList.push(t + '--fullWidth')
-      if (this.flex) classList.push(t + '--flex')
-      if (this.transparent) classList.push(t + '--transparent')
-      
-      if (this.offsetT) classList.push(t + '--offsetT_' + this.offsetT)
-
-      if (this.accent) {
-        const _ = (this.light) ? '--accent_light' : '--accent'
-        classList.push(t + _)
-      }
-
-      if (this.firstSection) classList.push(t + '--first')
-
-      return classList.join(' ')
-    }
-  }
-}
-</script>
 
 <style lang="scss">
 @include block(mmmSection) {

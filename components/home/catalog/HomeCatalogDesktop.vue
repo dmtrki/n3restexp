@@ -1,3 +1,18 @@
+<script setup>
+const { dataset } = defineProps({
+  dataset: {
+    type: [Object, Array],
+    default: () => {}
+  }
+})
+</script>
+
+<script>
+export default {
+  name: 'HomeCatalogDesktop'
+}
+</script>
+
 <template>
   <div class="homeCatalog">
     <MmmCell
@@ -19,56 +34,31 @@
       </template>
     </MmmCell>
     <MmmSection
-      full-width
-      offset-t="xsmall"
+        v-if="dataset.roots"
+        full-width
+        offset-t="xsmall"
     >
-      <CatalogCascader :roots="componentData.categories" />
+      <MmmSlider>
+        <div v-for="item in dataset.roots">
+          {{ item }}
+        </div>
+      </MmmSlider>
     </MmmSection>
     <MmmCell
-      v-if="componentData.manufacturersMore"
-      :title="componentData.manufacturersMore"
-      to="/manufacturers/"
+      v-if="dataset.manufacturersMore"
+      :title="dataset.manufacturersMore"
+      to="/manufacturers"
     />
     <MmmSection
-      offset-t="xsmall"
-      v-if="componentData.manufacturers"
+        v-if="dataset.manufacturers"
+        offset-t="xsmall"
     >
-      <Grid
-        direction="horizontal"
-        :column-num="2"
-        :center="false"
-        clickable
-        :border="false"
-      >
-        <GridItem
-          v-for="(manufacturer, index) in componentData.manufacturers"
-          :key="index"
-          icon="photo-o"
-          :text="manufacturer.title"
-          :to="`/manufacturers/${manufacturer.slug}/`"
-        />
-      </Grid>
+      <div v-for="item in dataset.manufacturers">
+        {{ item }}
+      </div>
     </MmmSection>
   </div>
 </template>
-
-<script>
-import {Cell, CellGroup, Grid, GridItem} from 'vant'
-
-export default {
-  props: {
-    componentData: {
-      type: Array | Object,
-      default: () => []
-    }
-  },
-  components: {
-    Cell, CellGroup, Grid, GridItem
-  },
-  mounted() {
-  }
-}
-</script>
 
 <style lang="scss">
   .homeCatalog {

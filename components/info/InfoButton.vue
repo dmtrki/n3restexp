@@ -1,9 +1,36 @@
+<script setup>
+const props = defineProps({
+  title: {
+    type: String,
+    default: ''
+  },
+  pictureUrl: {
+    type: String,
+    default: ''
+  },
+  alt: {
+    type: String,
+    default: ''
+  },
+  bg: {
+    type: String,
+    default: ''
+  },
+  to: {
+    type: String,
+    default: '#'
+  }
+})
+
+const background = computed(() => props.bg ? `background: ${props.bg};` : null)
+</script>
+
 <template>
-  <NuxtLink :to="to" class="infoButton" :style="background">
+  <NuxtLink :to="props.to" class="infoButton" :style="props.background">
     <div class="infoButton__pic">
       <slot/>
     </div>
-    <div class="infoButton__title"><span>{{ title }}</span></div>
+    <div class="infoButton__title"><span>{{ props.title }}</span></div>
     <div class="infoButton__arrow">
       <MmmCssIcon type="next" />
     </div>
@@ -13,33 +40,6 @@
 <script>
 export default {
   name: 'InfoButton',
-  props: {
-    title: {
-      type: String,
-      default: ''
-    },
-    pictureUrl: {
-      type: String,
-      default: ''
-    },
-    alt: {
-      type: String,
-      default: ''
-    },
-    bg: {
-      type: String,
-      default: ''
-    },
-    to: {
-      type: String,
-      default: '#'
-    }
-  },
-  computed: {
-    background() {
-      return (this.bg) ? `background: ${this.bg};` : null
-    }
-  }
 }
 </script>
 

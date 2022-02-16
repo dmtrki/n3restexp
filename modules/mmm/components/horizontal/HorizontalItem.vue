@@ -1,38 +1,38 @@
-<template>
-  <div :class="classList">
-    <slot></slot>
-  </div>  
-</template>
+<script setup>
+import { SwiperSlide } from 'swiper/vue'
+
+const {fullwidth, marginLeftZero} = defineProps({
+  fullwidth: {
+    type: Boolean,
+    default: false
+  },
+  marginLeftZero: {
+    type: Boolean,
+    default: false
+  }
+})
+
+const classes = computed(() => {
+  let b = 'horizontal__item',
+      classList = [b]
+
+  if (fullwidth) classList.push(b + '--fullWidth')
+  if (marginLeftZero) classList.push(b + '--marginLeftZero')
+  return classList.join(' ')
+})
+</script>
 
 <script>
 export default {
-  props: {
-    fullwidth: {
-      type: Boolean,
-      default: false
-    },
-    marginLeftZero: {
-      type: Boolean,
-      default: false
-    }
-  },
-  data() {
-    return {
-      
-    }
-  },
-  computed: {
-    classList() {
-      let b = 'horizontal__item',
-          classList = [b]
-
-      if (this.fullWidth) classList.push(b + '--fullWidth')
-      if (this.marginLeftZero) classList.push(b + '--marginLeftZero')
-      return classList.join(' ')
-    }
-  }
+  name: 'MmmHorizontalItem'
 }
 </script>
+
+<template>
+  <SwiperSlide :class="classes">
+    <slot/>
+  </SwiperSlide>
+</template>
 
 <style lang="scss">
   .horizontal__item {

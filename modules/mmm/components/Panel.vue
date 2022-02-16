@@ -1,36 +1,38 @@
+<script setup>
+import {_styleProps, _ps, _pbf, _pbt} from '~/helpers/componentsHelper'
+import {useTheming} from '~/composables/components/useTheming'
+
+const props = defineProps({
+  ..._styleProps,
+  padding: {
+    type: Boolean | Number,
+    default: false
+  },
+})
+
+const {classRoot} = useTheming('Panel')
+
+const classes = computed(() => {
+  const t = classRoot
+  let classList = [t]
+
+  if (props.padding) classList.push(t + '--paddy_' + props.padding)
+
+  return classList.join(' ')
+})
+</script>
+
+<script>
+export default {
+  name: 'MmmPanel'
+}
+</script>
+
 <template>
   <div :class="classList">
     <slot />
   </div>
 </template>
-<script>
-import theming from '~/mixins/mmm/componentTheming'
-
-export default {
-  mixins: [theming],
-  props: {
-    padding: {
-      type: Boolean | Number,
-      default: false
-    }
-  },
-  data() {
-    return {
-      classBase: 'Panel',
-    }
-  },
-  computed: {
-    classList() {
-      let classList = this.classListBase
-
-      if (this.padding) classList.push(this.classRoot + '--paddy_' + this.padding)
-
-      return classList.join(' ')
-    }
-  }
-
-}
-</script>
 
 <style lang="scss">
   .mmmPanel {

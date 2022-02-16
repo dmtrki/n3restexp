@@ -1,8 +1,6 @@
 <template>
   <ValidationObserver slim ref="obs" v-slot="{ handleSubmit, invalid }">
     <MmmForm
-      v-bind="$attrs"
-      v-on="$listeners"
       :title="title"
       @submit.prevent="handleSubmit(submit)"
     >

@@ -1,4 +1,8 @@
 https://github.com/dergunovs/dergunov-ui/tree/main/src
+https://github.com/vueuse/motion
+https://github.com/nuxt/framework/blob/a896c64b1232dba1d01874159a9953d5f79bccc4/packages/nuxt3/src/meta/module.ts
+https://github.com/nuxt/framework/blob/9efdf43eec0cd4af8e4978909c53bfab6d0e2f81/docs/content/3.docs/2.directory-structure/8.modules.md
+https://github.com/ldiebold/sanctum-composables/blob/master/sanctum-composables/src/main.ts
 ## graphql
 -
 - https://www.npmjs.com/package/@nuxt3-graphql/urql

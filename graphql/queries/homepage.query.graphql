@@ -1,0 +1,13 @@
+query getHomepage {
+    page(slug: "homepage") {
+        title
+        extras
+    }
+    manufacturers (limit: 6) {
+        uuid
+        title
+        slug
+        thumb
+    },
+    manufacturersCount
+}

@@ -582,14 +582,46 @@ export type WhereConditionsRelation = {
   relation: Scalars['String'];
 };
 
+export type GetCommonDataQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetCommonDataQuery = { __typename?: 'Query', page?: { __typename?: 'Page', extras?: any | null | undefined } | null | undefined };
+
 export type GetHomepageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetHomepageQuery = { __typename?: 'Query', manufacturersCount: number, page?: { __typename?: 'Page', title: string, extras?: any | null | undefined } | null | undefined, manufacturers: Array<{ __typename?: 'Manufacturer', uuid: any, title: string, slug: string, thumb?: string | null | undefined } | null | undefined> };
 
+export type GetProductCategoryQueryVariables = Exact<{
+  parent_id?: InputMaybe<Scalars['Int']>;
+}>;
 
-export const GetHomepageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getHomepage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"page"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"slug"},"value":{"kind":"StringValue","value":"home","block":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"extras"}}]}},{"kind":"Field","name":{"kind":"Name","value":"manufacturers"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"IntValue","value":"6"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"uuid"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"thumb"}}]}},{"kind":"Field","name":{"kind":"Name","value":"manufacturersCount"}}]}}]} as unknown as DocumentNode;
+
+export type GetProductCategoryQuery = { __typename?: 'Query', productCategories: Array<{ __typename?: 'ProductCategory', id: number, uuid: any, slug: string, title: string, parent_id?: number | null | undefined, thumb?: string | null | undefined, products_count?: number | null | undefined, children_count?: number | null | undefined } | null | undefined> };
+
+export type GetRootProductCategoryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetRootProductCategoryQuery = { __typename?: 'Query', productCategories: Array<{ __typename?: 'ProductCategory', id: number, uuid: any, slug: string, title: string, thumb?: string | null | undefined, parent_id?: number | null | undefined } | null | undefined> };
+
+
+export const GetCommonDataDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getCommonData"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"page"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"slug"},"value":{"kind":"StringValue","value":"common","block":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"extras"}}]}}]}}]} as unknown as DocumentNode;
+
+export function useGetCommonDataQuery(options: Omit<Urql.UseQueryArgs<never, GetCommonDataQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<GetCommonDataQuery>({ query: GetCommonDataDocument, ...options });
+};
+export const GetHomepageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getHomepage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"page"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"slug"},"value":{"kind":"StringValue","value":"homepage","block":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"extras"}}]}},{"kind":"Field","name":{"kind":"Name","value":"manufacturers"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"IntValue","value":"6"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"uuid"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"thumb"}}]}},{"kind":"Field","name":{"kind":"Name","value":"manufacturersCount"}}]}}]} as unknown as DocumentNode;
 
 export function useGetHomepageQuery(options: Omit<Urql.UseQueryArgs<never, GetHomepageQueryVariables>, 'query'> = {}) {
   return Urql.useQuery<GetHomepageQuery>({ query: GetHomepageDocument, ...options });
+};
+export const GetProductCategoryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getProductCategory"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"parent_id"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"productCategories"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"parent_id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"parent_id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"uuid"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"parent_id"}},{"kind":"Field","name":{"kind":"Name","value":"thumb"}},{"kind":"Field","name":{"kind":"Name","value":"products_count"}},{"kind":"Field","name":{"kind":"Name","value":"children_count"}}]}}]}}]} as unknown as DocumentNode;
+
+export function useGetProductCategoryQuery(options: Omit<Urql.UseQueryArgs<never, GetProductCategoryQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<GetProductCategoryQuery>({ query: GetProductCategoryDocument, ...options });
+};
+export const GetRootProductCategoryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getRootProductCategory"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"productCategories"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"parent_id"},"value":{"kind":"NullValue"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"uuid"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"thumb"}},{"kind":"Field","name":{"kind":"Name","value":"parent_id"}}]}}]}}]} as unknown as DocumentNode;
+
+export function useGetRootProductCategoryQuery(options: Omit<Urql.UseQueryArgs<never, GetRootProductCategoryQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<GetRootProductCategoryQuery>({ query: GetRootProductCategoryDocument, ...options });
 };

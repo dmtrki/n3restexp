@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Modules" pattern="file[app3]:modules//*&amp;&amp;!file[app3]:modules/*/components//*&amp;&amp;!file[app3]:modules/*/composables//*" />
+</component>

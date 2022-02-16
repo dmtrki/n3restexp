@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "dev": "nuxi dev",
+    "dev": "nuxi dev --port=8888",
     "build": "nuxi build",
     "start": "node .output/server/index.mjs",
     "codegen": "graphql-codegen --config codegen.yml",
@@ -26,17 +26,22 @@
     "watson-scss": "^1.0.6"
   },
   "dependencies": {
+    "@egjs/vue3-flicking": "^4.4.3",
     "@graphql-codegen/typescript-urql-graphcache": "^2.2.2",
     "@graphql-codegen/typescript-vue-urql": "^2.2.1",
+    "@pinia/nuxt": "^0.1.8",
     "@vueuse/nuxt": "^7.0.0-alpha.3",
     "less": "^4.1.2",
     "nexus": "^1.1.0",
+    "pinia": "^2.0.9",
     "sass": "^1.43.4",
+    "swiper": "^7.4.1",
     "tslib": "^2.3.1",
     "vant": "^3.3.3",
     "vee-validate": "^4.5.6",
+    "vue-agile": "^2.0.0",
     "vue-class-component": "^7.2.6",
-    "vue-horizontal": "^1.0.2",
+    "vue-docgen-web-types": "^0.1.7",
     "vue-lazy-hydration": "^2.0.0-beta.4",
     "vue-ray": "^1.17.3",
     "vue3-touch-events": "^4.1.0"
