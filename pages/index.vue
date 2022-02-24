@@ -3,24 +3,22 @@ import {useGetHomepageQuery} from '~/graphql/operations'
 
 const {fetching, error, data} = await useGetHomepageQuery()
 
-    const page = data.value.page ?? null,
-          extras = page !== null && page.extras ? page.extras : false,
-          title = extras ? extras.meta_title ?? page.title : false,
-          promoData = extras && extras.home_featured ? {featured: extras.home_featured} : false,
-          catalogData = {
-            manufacturers: data.value.manufacturers ?? null,
-            manufacturersCount: data.value.manufacturersCount ?? null
-          }
+const hasData = computed(() => fetching.value === false && typeof data !== 'undefined')
 
+const page = hasData.value !== false ? data.value.page ?? null : null,
+      extras = page !== null && page.extras ? page.extras : false,
+      title = extras ? extras.meta_title ?? page.title : false,
+      promo = extras && extras.home_featured ? {featured: JSON.parse(extras.home_featured)} : false,
+      catalog = {
+        manufacturers: data.value.manufacturers ?? null,
+        manufacturersCount: data.value.manufacturersCount ?? null
+      }
 </script>
 
 <template>
   <section>
-    <MmmSection first-section accent light>
-      <HomeHeader />
-      <HomePromo :promo-data="promoData" />
-    </MmmSection>
-    <HomeCatalog :catalog-data="catalogData" />
-    <HomeInfo />
+    <HomeHeader />
+    <HomePromo :dataset="promo" />
+    <HomeCatalog :dataset="catalog" />
   </section>
 </template>

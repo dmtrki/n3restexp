@@ -1,24 +1,28 @@
+<script setup>
+
+const props = defineProps({
+  list: {
+    type: Boolean,
+    default: false
+  }
+})
+</script>
+
+<script>
+export default {
+  name: 'MmmLoading'
+}
+</script>
+
 <template>
   <div class="mmmLoading">
-    <template v-if="list">
+    <template v-if="props.list">
       <div class="skeleton skeleton--small" />
       <div class="skeleton skeleton--small is-delay-1" />
       <div class="skeleton skeleton--small is-delay-2" />
     </template>
   </div>
 </template>
-
-<script>
-export default {
-  props: {
-    list: {
-      type: Boolean,
-      default: false
-    }
-  }
-
-}
-</script>
 
 <style lang="scss">
 .skeleton {
@@ -28,10 +32,10 @@ export default {
   margin-bottom: 5px;
 	background-color: #e2e5e7;
 	// The shine that's going to move across the skeleton:
-	background-image:			
+	background-image:
 			linear-gradient(
-				90deg, 
-				rgba(#fff, 0), 
+				90deg,
+				rgba(#fff, 0),
 				rgba(#fff, 0.5),
 				rgba(#fff, 0)
 			);

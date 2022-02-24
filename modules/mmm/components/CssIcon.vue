@@ -4,10 +4,6 @@
       type: String,
       default: 'next'
     },
-    includeChild: {
-      type: Boolean,
-      default: false
-    },
     size: {
       type: String,
       default: ''
@@ -34,19 +30,28 @@
     'enter': 'gg-enter',
   }
 
-  const iconClass = computed(() => iconToClass[props.icon] ? iconToClass[props.icon] : false)
+  const typeNeedsChild = []
 
-  const classList = computed(() => {
-    let classList = [iconClass]
+  const iconClass = computed(() => iconToClass[props.icon] ?? false)
+
+  const classes = computed(() => {
+    let classList = iconClass ? [iconClass.value] : []
 
     if (props.size) classList.push(`mmmCssIcon--${props.size}`)
     return classList.join(' ')
-  })
+  }),
+    includeChild = computed(() => typeNeedsChild.includes(iconClass.value))
 
 </script>
 
+<script>
+export default {
+  name: 'MmmCssIcon'
+}
+</script>
+
 <template>
-  <div :class="classList">
+  <div :class="classes">
     <div v-if="includeChild" />
     <div v-if="includeChild" />
   </div>

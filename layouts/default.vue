@@ -4,9 +4,9 @@ const showAppBar = ref(true)
 
 <template>
   <div class="default">
-    <AppBar v-if="showAppBar" />
+    <AppBar v-if="$device.isMobile && showAppBar" />
     <slot />
-    <AppTabBar />
+    <AppTabBar v-if="$device.isMobile" />
   </div>
 </template>
 

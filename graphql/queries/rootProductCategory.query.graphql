@@ -1,0 +1,12 @@
+query getRootProductCategory {
+    productCategories(
+        parent_id: null
+    ) {
+        id
+        uuid
+        slug
+        title
+        thumb
+        parent_id
+    }
+}

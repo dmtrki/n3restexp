@@ -1,20 +1,20 @@
-<template>
-  <MmmAd component-name="HomePromo" :component-data="promoData" />
-</template>
+<script setup>
+import {useDeviceBasedComponent} from "../../composables/useDynamicComponent";
 
-<script>
-export default {
-  props: {
-    promoData: {
-      type: Object | Array,
-      default: () => {}
-    }
-  },
-  created() {
-
+const {dataset} = defineProps({
+  dataset: {
+    type: [Object, Array],
+    default: () => {}
   }
-}
+})
+
+const {deviceBasedComponent} = useDeviceBasedComponent('HomePromo')
+
 </script>
+
+<template>
+  <Component :is="deviceBasedComponent" :dataset="dataset" />
+</template>
 
 <style lang="scss">
 

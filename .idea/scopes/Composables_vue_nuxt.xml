@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Composables vue\nuxt" pattern="file[app3]:composables//*||file[app3]:modules/*/composables//*" />
+</component>

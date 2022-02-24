@@ -1,39 +1,18 @@
-<template>
-  <Component
-    :is="tag"
-    v-bind="$attrs"
-    v-on="$listeners"
-    :class="classList"
-    :type="getType"
-  >
-    <div v-if="icon && !iconRight" :class="iconClass">
-      <MmmCssIcon v-if="cssIcon" :type="icon" />
-      <slot v-if="isCustomIcon" name="customIcon"></slot>
-    </div>
-    <slot></slot>
-    <div v-if="icon && iconRight" :class="iconClass">
-      <MmmCssIcon v-if="cssIcon" :type="icon" :size="sized" />
-      <slot v-if="isCustomIcon" name="customIcon"></slot>
-    </div>
-  </Component>
-</template>
+<script lang="ts" setup>
+import {_pbf} from '../shared/componentsHelper'
+import {useStyledComponent, styledComponentOptions} from '../composables/useStyledComponent'
 
-<script>
-import themingMixing from "@/mixins/mmm/componentTheming.js"
-import {_pbf} from '~/services/helpers/componentHelpers'
-
-export default {
-  mixins: [themingMixing],
-  props: {
-    outline: _pbf,
+const styledOptions: styledComponentOptions = {
+  classBase: 'button',
+  targetProps: {
     disabled: _pbf,
     gradient: _pbf,
     rounded: _pbf,
     onDark: _pbf,
     block: _pbf,
     icon: {
-      type: Boolean | String,
-      default: false
+      type: String,
+      default: ''
     },
     cssIcon: _pbf,
     iconRight: _pbf,
@@ -42,44 +21,56 @@ export default {
       default: 'div'
     },
     submit: _pbf,
-  },
-  data() {
-    return {
-      classBase: 'Button',
-      cssIcons: []
-    }
-  },
-  computed: {
-    classList() {
-      let classList = this.classListBase
-
-      if (this.outline) classList.push(`${this.classRoot}--${this.themed}_outline`)
-      if (this.gradient) classList.push(`${this.classRoot}--${this.themed}_gradient`)
-      if (this.rounded) classList.push(`${this.classRoot}--rounded`)
-      if (this.block) classList.push(`${this.classRoot}--block`)
-      if (this.disabled) classList.push('is-disabled')
-      if (this.onDark) classList.push('is-onDark')
-
-      return classList.join(' ')
-    },
-    iconClass() {
-      const t = this,
-            m = t.iconRight ? 'right' : 'left',
-            b = t.classPrefix + t.classBase + '__icon'
-      let classList = [b, `${b}--${m}`]
-
-      return classList.join(' ')
-    },
-    isCustomIcon() {
-      return (this.icon && this.icon === 'custom') ? true : false
-    },
-    getType() {
-      return this.submit ? 'submit' : false
-    }
   }
+}
 
+const {classRoot, props, styledClasses, themed} = useStyledComponent(styledOptions)
+
+const classes = computed(() => {
+      const base = classRoot.value
+      let classList = styledClasses.value
+
+      if (props.gradient) classList.push(`${base}--${themed}Gradient`)
+      if (props.rounded) classList.push(`${base}--rounded`)
+      if (props.block) classList.push(`${base}--block`)
+      if (props.disabled) classList.push('is-disabled')
+      if (props.onDark) classList.push('is-onDark')
+      return classList.join(' ')
+    }),
+    iconClass = computed(() => {
+      const modifier = props.iconRight ? 'right' : 'left',
+            base = classRoot.value + '__icon'
+      let classList = [base, `${base}--${modifier}`]
+      return classList.join(' ')
+    }),
+    whenSubmit = computed(() => props.submit ? 'submit' : false),
+    isCustomIcon = computed(() => props.icon && props.icon === 'custom' ? true : false)
+</script>
+
+<script>
+export default {
+  name: 'MmmButton'
 }
 </script>
+
+<template>
+  <Component
+    :is="props.tag"
+    v-bind="$attrs"
+    :class="classes"
+    :type="whenSubmit"
+  >
+    <div v-if="props.icon && !props.iconRight" :class="iconClass">
+      <MmmCssIcon v-if="props.cssIcon" :type="props.icon" />
+      <slot v-if="isCustomIcon" name="customIcon"></slot>
+    </div>
+    <slot></slot>
+    <div v-if="props.icon && props.iconRight" :class="iconClass">
+      <MmmCssIcon v-if="props.cssIcon" :type="props.icon" :size="size" />
+      <slot v-if="isCustomIcon" name="customIcon"></slot>
+    </div>
+  </Component>
+</template>
 
 <style lang="scss">
   .mmmButton {
@@ -89,7 +80,7 @@ export default {
     cursor: pointer;
     border-radius: 13px;
     border: 1px solid transparent;
-    transition: all .3s;    
+    transition: all .3s;
 
     $t: '.mmmButton';
 
@@ -287,6 +278,6 @@ export default {
       opacity: .55;
       filter: grayscale(.55);
     }
-  
+
   }
 </style>

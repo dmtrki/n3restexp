@@ -1,38 +1,26 @@
 <script setup>
-  const props = defineProps({
-    catalogData: {
-      type: Object | Array,
+  import {useDeviceBasedComponent} from "../../composables/useDynamicComponent";
+
+  const {dataset} = defineProps({
+    dataset: {
+      type: [Object, Array],
       default: () => {}
     }
   })
 
-  const manufacturersMore = () => {
-    if ( props.catalogData.manufacturersCount && props.catalogData.manufacturersCount !== null ) {
-      return props.catalogData.manufacturersCount + ' ' + useRusEndings(props.catalogData.manufacturersCount, ['производитель', 'производителя', 'производителей'])
+  const {deviceBasedComponent} = useDeviceBasedComponent('HomeCatalog')
+
+  const manufacturersMore = computed(() => {
+    if ( dataset.manufacturersCount ) {
+      return dataset.manufacturersCount + ' ' + useRusEndings(dataset.manufacturersCount, ['производитель', 'производителя', 'производителей'])
     }
     return 0;
-  }
+  })
 </script>
 
 <template>
-  <MmmAd component-name="HomeCatalog" :component-data="{...catalogData, manufacturersMore: manufacturersMore}" />
+  <Component :is="deviceBasedComponent" :dataset="{manufacturersMore: manufacturersMore, ...dataset}" />
 </template>
-<script>
-export default {
-  props: {
-
-  },
-  computed: {
-
-  },
-  methods: {
-    // horizontalWheel (event) {
-    //   if (!event.shiftKey) this.$refs.homeTopSlider.slideWheel(event)
-    // },
-  }
-}
-</script>
-
 
 <style lang="scss">
 

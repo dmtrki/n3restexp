@@ -1,6 +1,8 @@
 import { defineNuxtConfig } from 'nuxt3'
+import * as path from "path";
 
 export default defineNuxtConfig({
+    dev: true,
     meta: {
         meta: [
             { charset: 'utf-8' },
@@ -12,18 +14,31 @@ export default defineNuxtConfig({
         ]
     },
     publicRuntimeConfig: {
-        gqlurl: ''
+        GRAPHQL_API: '',
+        LOG: 3
     },
     css: [
         '@/assets/scss/common.scss'
     ],
     modules: [
-    ],
+    ], // https://debugjs.net/
     buildModules: [
-        '~/modules/mmm.js',
         '@vueuse/nuxt/module',
         "@nuxt3-graphql/urql",
         "@nuxt3-graphql/codegen",
+        '@pinia/nuxt',
+        {
+            name: 'mmm',
+            handler: '~/modules/mmm'
+        },
+        {
+            name: 'cart',
+            handler: '~/modules/cart'
+        },
+        {
+            name: 'catalog',
+            handler: '~/modules/catalog'
+        }
     ],
     urql: {
         url: 'http://restoreca.api/graphql'
@@ -46,6 +61,12 @@ export default defineNuxtConfig({
         }
     },
     vite: {
+        resolve: {
+            alias: {
+                'node_modules': path.resolve(__dirname, './node_modules'),
+                'assets': path.resolve(__dirname, './assets')
+            }
+        },
         css: {
             preprocessorOptions: {
                 scss: {
@@ -53,11 +74,5 @@ export default defineNuxtConfig({
                 },
             },
         },
-        server: {
-            port: 3335
-        },
-        ssr: {
-            target: 'webworker'
-        }
     }
 })

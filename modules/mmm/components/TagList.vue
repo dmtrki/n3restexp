@@ -1,39 +1,35 @@
-<template>
-  <div :class="classList">
+<script setup>
+import {_styleProps, _pbf} from '~/helpers/componentsHelper'
+import {useTheming} from '~/composables/components/useTheming'
 
-  </div>
-</template>
+const props = defineProps({
+  ..._styleProps,
+  multiRow: _pbf
+})
+
+const {themingClasses} = useTheming('TagList', props)
+
+const classes = computed(() => {
+  let classList = themingClasses
+
+  if (this.multiRow) classList.push(this.classRoot + '--multiRow')
+
+  return classList.join(' ')
+})
+
+</script>
+
 <script>
-import componentTheming from '~/mixins/mmm/componentTheming'
-
 export default {
-  mixins: [componentTheming],
-  props: {
-    multiRow: {
-      type: Boolean,
-      default: false
-    }
-  },
-  data() {
-    return {
-      classPrefix: 'mmm',
-      classBase: 'TagList'
-    }
-  },
-  computed: {
-    classRoot() {
-      return classPrefix + classBase
-    },
-    classList() {
-      let classList = [this.classRoot]
-
-      if (this.multiRow) classList.push(this.classRoot + '--multiRow')
-
-      return classList.join(' ')
-    }
-  }
+  name: 'MmmTagList'
 }
 </script>
+
+<template>
+  <div :class="classes">
+    <slot/>
+  </div>
+</template>
 
 <style lang="scss">
   @include block(mmmTagList) {

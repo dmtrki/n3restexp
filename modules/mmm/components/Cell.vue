@@ -1,10 +1,54 @@
+<script setup>
+import {_styleProps, _ps, _pbf} from '~/helpers/componentsHelper'
+import {useTheming} from '~/composables/components/useTheming'
+
+const props = defineProps({
+  ..._styleProps,
+  title: _ps,
+  subtitle: _ps,
+  action: _ps,
+  actionOnTop: _pbf,
+  background: {
+    type: String,
+    default: ''
+  },
+  border: _pbf,
+  equal: _pbf,
+  to: _ps
+})
+
+const classBase = 'Cell',
+    {classRoot, themingClasses} = useTheming(classBase, props)
+
+const tag = computed(() => props.to === '' ? 'div' : 'NuxtLink'),
+    classes = computed(() => {
+      let classList = [themingClasses.value]
+
+      if (props.actionOnTop) classList.push(classRoot + '--actionOnTop')
+      if (props.equal) classList.push(classRoot + '--equal')
+
+      return classList.join(' ')
+    }),
+    isLink = computed(() => !!(props.to && props.to !== '#'))
+
+const onClick = (e) => {
+
+}
+</script>
+
+<script>
+export default {
+  name: 'MmmCell'
+}
+</script>
+
 <template>
   <Component
     :is="tag"
     v-bind="$attrs"
-    v-on="$listeners"
     :to="to"
-    :class="classList"
+    :class="classes"
+    @click="onClick"
   >
     <div :class="classRoot + '__main'">
       <template v-if="!($slots.default || [])[0]">
@@ -18,52 +62,6 @@
     </div>
   </Component>
 </template>
-
-<script>
-import themingMixing from "@/mixins/mmm/componentTheming"
-import {_pbf, _ps} from '~~/services/helpers/componentHelpers'
-
-export default {
-  mixins: [themingMixing],
-  props: {
-    title: _ps,
-    subtitle: _ps,
-    action: _ps,
-    actionOnTop: _pbf,
-    background: {
-      type: String | Boolean,
-      default: false
-    },
-    border: _pbf,
-    equal: _pbf,
-    to: _ps
-  },
-  data() {
-    return {
-      classBase: 'Cell',
-    }
-  },
-  computed: {
-    tag() {
-      return (this.to === '') ? 'div' : 'NuxtLink'
-    },
-    classList() {
-      let classList = this.classListBase
-
-      if (this.actionOnTop) classList.push(this.classRoot + '--actionOnTop')
-      if (this.equal) classList.push(this.classRoot + '--equal')
-
-      return classList.join(' ')
-    },
-    isLink() {
-      return (this.to && this.to !== '#') ? true : false
-    }
-  },
-  created() {
-
-  }
-}
-</script>
 
 <style lang="scss">
 
@@ -92,9 +90,9 @@ export default {
   @include modifier(actionOnTop) {
     align-items: flex-start;
   }
-  
+
   @include modifier(equal) {
-    
+
     @include element(main) {
       flex: 1;
     }

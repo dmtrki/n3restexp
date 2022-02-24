@@ -1,41 +1,29 @@
+<script setup>
+import {_ps, _pbf} from '~~/services/helpers/componentHelpers'
+import {useTheming} from '~/composables/components/useTheming'
+
+const props = defineProps({
+  text: _ps,
+  icon: _ps,
+  iconRight: _ps,
+})
+
+const {themingClasses} = useTheming('Tag')
+</script>
+
+<script>
+export default {
+  name: 'MmmTag'
+}
+</script>
+
 <template>
-  <div :class="classList">
+  <div :class="themingClasses">
     <MmmCssIcon v-if="icon" class="mmmTag__icon" :type="icon" />
     {{ text }}
     <MmmCssIcon v-if="iconRight" class="mmmTag__rightIcon" :type="iconRight" />
   </div>
 </template>
-<script>
-import componentBase from '~~/mixins/mmm/componentTheming'
-
-export default {
-  mixins: [componentBase],
-  props: {
-    text: {
-      type: String,
-      default: ''
-    },
-    icon: {
-      type: String,
-      default: ''
-    },
-    iconRight: {
-      type: String,
-      default: ''
-    }
-  },
-  data() {
-    return {
-      classBase: 'Tag',
-    }
-  },
-  computed: {
-    classList() {
-      return this.classListBase;
-    }
-  }
-}
-</script>
 
 <style lang="scss">
   @include block(mmmTag) {
@@ -57,7 +45,7 @@ export default {
         margin-right: 2px;
         --ggs: 0.5;
       }
-      
+
       @include element(rightIcon) {
         margin-left: 2px;
         --ggs: 0.5;

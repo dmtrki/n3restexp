@@ -1,3 +1,74 @@
+<script setup>
+const cards = [
+  {
+    backgroundImage: '/assets/images/home/c-storages.png',
+    titleComplex: [
+      {
+        text: 'Сеть складов',
+        bold: true,
+        large: true
+      },
+      {
+        text: 'по всей России',
+        large: true
+      },
+      {
+        text: '18 городов',
+        bold: true,
+        large: true
+      },
+    ]
+  },
+  {
+    backgroundImage: '/assets/images/home/c-cold.png',
+    titleComplex: [
+      {
+        text: 'Более',
+        large: true,
+      },
+      {
+        text: '1 000 000',
+        large: true,
+      },
+      {
+        text: 'кубов холода',
+      },
+      {
+        text: 'мы произвели',
+      },
+      {
+        text: 'за 12 лет',
+        large: true,
+      },
+    ],
+    actionText: 'Сертификаты'
+  },
+  {
+    backgroundImage: 'assets/images/home/c-reviews.png',
+    titleComplex: [
+      {
+        text: '7035'
+      },
+      {
+        text: 'довольных клиентов'
+      },
+      {
+        text: '(на 12.08.20)',
+        small: true
+      }
+    ],
+    actionText: 'Отзывы'
+  }
+]
+
+const SvgDelivery = () => import('/assets/svg/illusDelivery.svg'),
+      SvgPayments = () => import('/assets/svg/illusPayment.svg'),
+      SvgGaranty = () => import('/assets/svg/garanty.svg'),
+      SvgDialog = () => import('/assets/svg/dialog.svg')
+
+
+</script>
+
 <template>
   <section>
     <MmmSection
@@ -54,83 +125,6 @@
     </MmmSection>
   </section>
 </template>
-
-<script>
-
-export default {
-  components: {
-    SvgDelivery: () => import('/assets/svg/illusDelivery.svg'),
-    SvgPayments: () => import('/assets/svg/illusPayment.svg'),
-    SvgGaranty: () => import('/assets/svg/garanty.svg'),
-    SvgDialog: () => import('/assets/svg/dialog.svg'),
-  },
-  data() {
-    return {
-      cards: [
-        {
-          backgroundImage: '/assets/images/home/c-storages.png',
-          titleComplex: [
-            {
-              text: 'Сеть складов',
-              bold: true,
-              large: true
-            },
-            {
-              text: 'по всей России',
-              large: true
-            },
-            {
-              text: '18 городов',
-              bold: true,
-              large: true
-            },
-          ]
-        },
-        {
-          backgroundImage: '/assets/images/home/c-cold.png',
-          titleComplex: [
-            {
-              text: 'Более',
-              large: true,
-            },
-            {
-              text: '1 000 000',
-              large: true,
-            },
-            {
-              text: 'кубов холода',
-            },
-            {
-              text: 'мы произвели',
-            },
-            {
-              text: 'за 12 лет',
-              large: true,
-            },
-          ],
-          actionText: 'Сертификаты'
-        },
-        {
-          backgroundImage: 'assets/images/home/c-reviews.png',
-          titleComplex: [
-            {
-              text: '7035'
-            },
-            {
-              text: 'довольных клиентов'
-            },
-            {
-              text: '(на 12.08.20)',
-              small: true
-            }
-          ],
-          actionText: 'Отзывы'
-        }
-      ]
-    }
-  }
-}
-</script>
 
 <style lang="scss">
   .cardContact {

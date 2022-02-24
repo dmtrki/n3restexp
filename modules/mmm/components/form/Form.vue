@@ -1,11 +1,26 @@
+<script setup>
+import {_styleProps, _ps} from '~/helpers/componentsHelper'
+import useTheming from '~/composables/components/useTheming'
+
+const props = defineProps({
+  ..._styleProps,
+  title: _ps
+})
+
+const {classRoot, themingClasses} = useTheming('Form')
+
+const classes = computed(() => {
+  themingClasses.join(' ')
+})
+</script>
+
 <template>
   <form
     v-bind="$attrs"
-    v-on="$listeners"
-    :class="classList"
+    :class="classes"
   >
     <div v-if="title" class="mmmForm__header">
-      <div class="mmmForm__title">{{ title }}</div>
+      <div class="mmmForm__title">{{ props.title }}</div>
       <div class="mmmForm__actions"></div>
     </div>
     <slot name="top"/>
@@ -13,29 +28,6 @@
     <slot name="bottom"/>
   </form>
 </template>
-<script>
-import theming from '~/mixins/mmm/componentTheming'
-
-export default {
-  mixins:  [theming],
-  props: {
-    title: {
-      type: String,
-      default: ''
-    }
-  },
-  data() {
-    return {
-      classBase: 'Form',
-    }
-  },
-  computed: {
-    classList() {
-      return this.classListBase.join(' ')
-    }
-  }
-}
-</script>
 
 <style lang="scss">
   .mmmForm {
@@ -65,7 +57,7 @@ export default {
 
 
   @include block(mmmForm) {
-    
+
     @include modifier(medium) {
       @include vmin(max-width, 377px);
     }

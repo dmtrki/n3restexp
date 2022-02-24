@@ -1,38 +1,34 @@
 <script setup>
-import { Button, Search } from 'vant'
-const props = defineProps({
-  headerData: {
-    type: Object,
-    default: () => {}
-  }
-})
-const commonData = useAppData(),
+
+const {data} = useAppState(),
     searchString = ref('')
+
+console.log(data)
 </script>
 
 <template>
-  <div class="homeHeader">
-    <div class="homeHeader__info">
-       <div class="homeHeader__logo">
-         <nuxt-link to="/" class="logo" />
-       </div>
-       <div class="homeHeader__contacts">
-         <div class="homeHeader__phone">
-            {{commonData.common_phone ?? ''}}
-          </div>
-          <MmmButton
+  <div className="homeHeader">
+    <div className="homeHeader__info">
+      <div className="homeHeader__logo">
+        <nuxt-link to="/" className="logo"/>
+      </div>
+      <div className="homeHeader__contacts">
+        <div className="homeHeader__phone">
+          {{ data.common_phone ?? '' }}
+        </div>
+        <MmmButton
             secondary
             small
             icon="phone"
             icon-right
             css-icon
-          >
-            Позвоним Вам
-          </MmmButton>
-       </div>
+        >
+          Позвоним Вам
+        </MmmButton>
+      </div>
     </div>
-    <div class="homeHeader__search">
-      <AppSearch />
+    <div className="homeHeader__search">
+      <AppSearch/>
     </div>
   </div>
 </template>
@@ -48,7 +44,6 @@ const commonData = useAppData(),
     display: flex;
     justify-content: space-between;
   }
-
 
 
   @include element(phone) {

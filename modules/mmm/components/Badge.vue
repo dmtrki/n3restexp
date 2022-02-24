@@ -1,31 +1,34 @@
-<template>
-  <div :class="classList">
-    {{ getValue }}
-  </div>
-</template>
+<script setup>
+const props = defineProps({
+  value: {
+    type: Number,
+    default: 0
+  }
+})
 
-<script>
-export default {
-  props: {
-    value: {
-      type: Number,
-      default: 0
-    }
-  },
-  computed: {
-    getValue() {
-      if (!this.value) return
-      return (this.value > 99) ? '99+' : this.value
-    },
-    classList() {
+const classes = computed(() => {
       let classList = ['mmmBadge']
       if (this.value && this.value > 9) classList.push('mmmBadge--autoWidth')
 
       return classList.join(' ')
-    }
-  }
+    }),
+    getValue = computed(() => {
+      if (!this.value) return
+      return (this.value > 99) ? '99+' : this.value
+    })
+</script>
+
+<script>
+export default {
+  name: 'MmmBadge'
 }
 </script>
+
+<template>
+  <div :class="classes">
+    {{ getValue }}
+  </div>
+</template>
 
 <style lang="scss">
   @include block(mmmBadge) {
